@@ -11,7 +11,7 @@ In your excercise code, you can do:
 ``` js
 var verify = require('adventure-verify');
 
-exports.show = 'pass in the argument 555'
+exports.problem = 'pass in the argument 555'
 
 exports.verify = verify(function (args, t) {
     t.plan(1);
