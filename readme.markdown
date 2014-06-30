@@ -6,14 +6,31 @@ with output from [faucet](https://npmjs.org/package/faucet)
 
 # example
 
+In your excercise code, you can do:
+
 ``` js
 var verify = require('adventure-verify');
 
+exports.show = 'pass in the argument 555'
+
 exports.verify = verify(function (args, t) {
-    t.plan(2);
-    t.ok(true, 'beep boop');
-    t.equal(1+1, 2);
+    t.plan(1);
+    t.equal(args[0], '555');
 });
+```
+
+And then run plug your beep_boop.js excercise into your
+[adventure](https://npmjs.org/package/adventure) runner:
+
+```
+var adventure = require('adventure');
+var adv = adventure('robots');
+
+adv.add('beep boop', function () {
+    return require('./beep_boop.js');
+});
+
+adv.execute(process.argv.slice(2));
 ```
 
 # methods
