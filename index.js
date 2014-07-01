@@ -23,13 +23,17 @@ module.exports = function (opts, fn) {
         console.log = function () {
             process.stdout.write('\x1b[0m');
             var res = prevLog.apply(this, arguments);
-            process.stdout.write(colors && colors.mode || '');
+            if (colors && colors.mode) {
+                process.stdout.write(colors.mode);
+            }
             return res;
         };
         console.error = function () {
             process.stderr.write('\x1b[0m');
             var res = prevError.apply(this, arguments);
-            process.stderr.write(colors && colors.mode || '');
+            if (colors && colors.mode) {
+                process.stderr.write(colors.mode);
+            }
             return res;
         };
     }
