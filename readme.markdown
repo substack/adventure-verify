@@ -62,6 +62,10 @@ You can pass in a named color such as `'green'`, an array rgb color such as
 `[40,240,100]`, a hex color such as `''#f00d55'`, and you can include a display
 modifier such as `'bright'`, `'dim'` or `'reverse'`.
 
+You can optionally set `opts.modeReset`, which hacks the colors back temporarily
+for `console.log()` and `console.error()` so that user debugging statements are
+printed without colors.
+
 # install
 
 With [npm](https://npmjs.org) do:
