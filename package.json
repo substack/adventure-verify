@@ -1,10 +1,10 @@
 {
   "name": "adventure-verify",
   "version": "1.0.3",
-  "description": "write adventure verify functions with tape and faucet",
+  "description": "write adventure verify functions with tape",
   "main": "index.js",
   "dependencies": {
-    "faucet": "~0.0.1",
+    "tap-colorize": "^1.1.0",
     "tap-parser": "~0.5.0",
     "tape": "^2.13.2"
   },

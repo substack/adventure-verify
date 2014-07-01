@@ -2,7 +2,8 @@
 
 write [adventure](https://npmjs.org/package/adventure)
 verify functions using [tape](https://npmjs.org/package/tape)
-with output from [faucet](https://npmjs.org/package/faucet)
+with [colored output](https://npmjs.org/package/tap-colorize)
+to better distinguish user output from test output
 
 # example
 
@@ -39,7 +40,7 @@ adv.execute(process.argv.slice(2));
 var verify = require('adventure-verify')
 ```
 
-## var fn = verify(function (args, t) {})
+## var fn = verify(opts={}, function (args, t) {})
 
 You should pass in a function that will get `args`, the command-line arguments
 supplied after the `xxx-adventure verify ...` command on the command line and
@@ -48,6 +49,18 @@ supplied after the `xxx-adventure verify ...` command on the command line and
 The function `fn(cb)` returned by `verify()` fits into the signature expected by
 [adventure](https://npmjs.org/package/adventure). `cb(ok)` will be called with a
 boolean `ok` based on parsing the tap output from tape for any failures.
+
+The options `opts` will be passed to
+[tap-colorize](https://npmjs.org/package/tap-colorize).
+These options work:
+
+* `opts.pass` - color of passing `/^ok/` lines
+* `opts.fail` - color of failing `/^not ok/` lines
+* `opts.info` - color of other tap-specific lines
+
+You can pass in a named color such as `'green'`, an array rgb color such as
+`[40,240,100]`, a hex color such as `''#f00d55'`, and you can include a display
+modifier such as `'bright'`, `'dim'` or `'reverse'`.
 
 # install
 
