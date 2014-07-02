@@ -43,8 +43,15 @@ module.exports = function (opts, fn) {
         test(function (t) { fn(args, t) });
         var stream = test.createStream();
         colors = colorize(opts);
-        if (reset) stream.once('end', function () { reset() });
+        var ended = false;
+        stream.once('end', function () {
+            if (reset) reset();
+            ended = true;
+        });
         stream.pipe(parser(function (results) { cb(results.ok) }));
+        process.on('exit', function () {
+            if (!ended) stream.end();
+        });
         return stream.pipe(colors);
     };
 };
