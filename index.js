@@ -7,6 +7,11 @@ module.exports = function (opts, fn) {
         fn = opts;
         opts = {};
     }
+    
+    if (typeof opts === 'string') {
+        opts = {name: opts};
+    }
+    
     if (!opts) opts = {};
     
     var colors = null, reset = null;
@@ -40,7 +45,7 @@ module.exports = function (opts, fn) {
      
     return function (args, cb) {
         var test = tape.createHarness();
-        test(function (t) { fn(args, t) });
+        test(opts.name, function (t) { fn(args, t) });
         var stream = test.createStream();
         colors = colorize(opts);
         var ended = false;
