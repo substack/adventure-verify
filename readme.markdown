@@ -7,7 +7,7 @@ to better distinguish user output from test output
 
 # example
 
-In your excercise code, you can do:
+In your exercise code, you can do:
 
 ``` js
 var verify = require('adventure-verify');
@@ -20,7 +20,7 @@ exports.verify = verify(function (args, t) {
 });
 ```
 
-And then run plug your beep_boop.js excercise into your
+And then run plug your beep_boop.js exercise into your
 [adventure](https://npmjs.org/package/adventure) runner:
 
 ```
